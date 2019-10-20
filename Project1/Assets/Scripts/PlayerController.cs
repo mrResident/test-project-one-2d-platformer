@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public Transform playerCamera;
-    public Transform background;
     public float speed = 250.0f;
     public float jumpForce = 12.0f;
     private Rigidbody2D _body;
@@ -64,16 +63,11 @@ public class PlayerController : MonoBehaviour {
         if (transform.position.x > playerCamera.transform.position.x + 9) {
             _camPos.x = _camPos.x + 18;
             playerCamera.transform.position = _camPos;
-            background.transform.position = new Vector3(_camPos.x, background.transform.position.y, background.transform.position.z);
-            background.GetComponent<SpriteRenderer>().flipX = !background.GetComponent<SpriteRenderer>().flipX;
-            //transform.position = new Vector3(-19.0f, transform.position.y, transform.position.z);
+            playerCamera.GetComponentInChildren<SpriteRenderer>().flipX = !playerCamera.GetComponentInChildren<SpriteRenderer>().flipX;
         } else if (transform.position.x < playerCamera.transform.position.x - 9) {
-            _camPos.x = _camPos.x -18;
+            _camPos.x = _camPos.x - 18;
             playerCamera.transform.position = _camPos;
-            //background.transform.position = _camPos;
-            background.transform.position = new Vector3(_camPos.x, background.transform.position.y, background.transform.position.z);
-            background.GetComponent<SpriteRenderer>().flipX = !background.GetComponent<SpriteRenderer>().flipX;
-            //transform.position = new Vector3(19f, transform.position.y, transform.position.z);
+            playerCamera.GetComponentInChildren<SpriteRenderer>().flipX = !playerCamera.GetComponentInChildren<SpriteRenderer>().flipX;
         }
     }
 }
