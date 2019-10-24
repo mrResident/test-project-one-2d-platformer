@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Alexandrov Alexander Alexandrovich
+Date: 25/10/2019
+
+Script that implement moving platform
+*/
 public class MovingPlatform : MonoBehaviour {
 
     public Vector3 finishPos = Vector3.zero;
@@ -23,7 +29,7 @@ public class MovingPlatform : MonoBehaviour {
         float y = (finishPos.y - _startPos.y) * _trackPercent + _startPos.y;
         transform.position = new Vector3(x, y, _startPos.z);
 
-        if ((_direction == 1 && _trackPercent > 0.9f) || (_direction == -1 && _trackPercent < .1f)) {
+        if ((_direction == 1 && _trackPercent > 1f) || (_direction == -1 && _trackPercent < 0f)) {
             _direction *= -1;
         }
     }
