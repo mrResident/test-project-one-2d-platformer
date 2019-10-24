@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 /*
 Author: Alexandrov Alexander Alexandrovich
 Date: 25/10/2019
 
-Script that implement death of player character
+Script that implement collect of coins by player's character
 */
-public class DeathTrigger : MonoBehaviour {
+
+public class CoinCollect : MonoBehaviour {
 
     private GameController gameController;
 
@@ -21,10 +23,10 @@ public class DeathTrigger : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.CompareTag("Player")) {
-            Destroy(other.gameObject);
-            gameController.GameOver();
+            gameController.AddScore(1);
+            Destroy(gameObject);
         }
     }
     

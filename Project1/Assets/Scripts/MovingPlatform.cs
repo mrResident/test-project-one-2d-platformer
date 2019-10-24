@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Alexandrov Alexander Alexandrovich
+Date: 25/10/2019
+
+Script that implement moving platform
+*/
 public class MovingPlatform : MonoBehaviour {
 
     public Vector3 finishPos = Vector3.zero;

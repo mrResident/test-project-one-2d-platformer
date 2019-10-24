@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+Author: Alexandrov Alexander Alexandrovich
+Date: 25/10/2019
+
+Script that implement player character controller
+*/
 public class PlayerController : MonoBehaviour {
 
     public Transform playerCamera;
@@ -11,14 +17,12 @@ public class PlayerController : MonoBehaviour {
     private BoxCollider2D _box;
     private Vector3 _camPos;
 
-    // Start is called before the first frame update
     void Start() {
         _body = GetComponent<Rigidbody2D>();
         _box = GetComponent<BoxCollider2D>();
         _camPos = playerCamera.transform.position;
     }
 
-    // Update is called once per frame
     void Update() {
         float deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         Vector2 movement = new Vector2(deltaX, _body.velocity.y);
@@ -48,6 +52,7 @@ public class PlayerController : MonoBehaviour {
             platform = hit.GetComponent<MovingPlatform>();
         }
 
+        //Checking if player character stay out on moving platform
         if (platform != null) {
             transform.parent = platform.transform;
         } else {
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour {
             transform.localScale = new Vector3(Mathf.Sign(deltaX)/pScale.x, 1/pScale.y, 1);
         }
 
+        //Checking for player character moving out of screen edge.
         if (transform.position.x > playerCamera.transform.position.x + 9) {
             _camPos.x = _camPos.x + 18;
             playerCamera.transform.position = _camPos;
